@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
-function App() {
+import Feed from "./components/Feed";
+import Header from "./components/Header";
+import LeftNav from "./components/LeftNav";
+import VideoDetails from "./components/VideoDetails";
+import searchResults from "./components/SearchResults";
+
+import { AppContext } from "./context.js/contextApi";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppContext>
+      <div className="text-2xl">Welcome to Youtube...</div>
+      <Header />
+      <Routes>
+        <Route path="/" exact element={<Feed />} />
+        <Route path="/searchResult/:searchQuery" element={<searchResults />} />
+        <Route path="/video/:id" element={<VideoDetails />} />
+      </Routes>
+      <BrowserRouter></BrowserRouter>
+    </AppContext>
   );
-}
+};
 
 export default App;
