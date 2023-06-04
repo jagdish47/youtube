@@ -12,14 +12,18 @@ import { AppContext } from "./context.js/contextApi";
 const App = () => {
   return (
     <AppContext>
-      <div className="text-2xl">Welcome to Youtube...</div>
-      <Header />
-      <Routes>
-        <Route path="/" exact element={<Feed />} />
-        <Route path="/searchResult/:searchQuery" element={<searchResults />} />
-        <Route path="/video/:id" element={<VideoDetails />} />
-      </Routes>
-      <BrowserRouter></BrowserRouter>
+      <BrowserRouter>
+        <div className="text-2xl">Welcome to Youtube...</div>
+        <Header />
+        <Routes>
+          <Route path="/" exact element={<Feed />} />
+          <Route
+            path="/searchResult/:searchQuery"
+            element={<searchResults />}
+          />
+          <Route path="/video/:id" element={<VideoDetails />} />
+        </Routes>
+      </BrowserRouter>
     </AppContext>
   );
 };
